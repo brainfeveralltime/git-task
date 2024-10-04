@@ -48,4 +48,7 @@ begin
       day_sum += 365;
   end;
   Print($'Количество дней между годами: {day_sum}');
+  
+  var count_hours := ReadInteger('Введите количество часов:');
+  Print($'Количество секунд: {count_hours * 3600}');
 end.
