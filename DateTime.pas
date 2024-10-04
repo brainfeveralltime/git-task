@@ -9,8 +9,14 @@
       answer := True
   end;
   Print($'Год весокосный? {answer}');
+  if answer then
+    Print('Количество дней в году: 366')
+  else
+    Print('Количество дней в году: 365');
   
-  var (N1, N2, M1, M2) := ReadInteger4('Введите две даты: день и месяц:');
+  Println;
+  
+  var (N1, N2, M1, M2) := ReadInteger4('Введите две даты (день и месяц):');
   if M2 > N2 then
     Print('Вторая дата ближе к Новому Году')
   else if M2 = N2 then
