@@ -9,4 +9,5 @@
       answer := True
   end;
   Print($'Год весокосный? {answer}');
+  Print('Количество секунд в минуте: 60');
 end.
