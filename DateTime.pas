@@ -1,15 +1,19 @@
-﻿begin
-  var year := ReadInteger('Введите год:');
-  var answer := False;
+﻿function Year (year: integer) : boolean;
+begin
+  Assert(year > 0);
   if year mod 4 = 0 then
   begin
-    if year mod 100 <> 0 then
-      answer := True;
-    if year mod 400 = 0 then
-      answer := True
+    Result := False;
+    if (year mod 100 <> 0) or (year mod 400 = 0) then
+      Result := True;
   end;
-  Print($'Год весокосный? {answer}');
-  if answer then
+end;
+
+begin
+  var our_year := ReadInteger('Введите год:');
+  Print($'Год весокосный? {Year(our_year)}');
+  Println;
+  if Year(our_year) then
     Print('Количество дней в году: 366')
   else
     Print('Количество дней в году: 365');
@@ -28,4 +32,20 @@
   end
   else
     Print('Первая дата ближе к Новому Году');
+  
+  Println;
+  
+  var (year1, year2) := ReadInteger2('Введите два года:');
+  Assert((year1 > 0) and (year2 > 0));
+  var day_sum : Integer;
+  if year1 > year2 then
+    Swap(year1, year2);
+  for var i := year1 to year2 do
+  begin
+    if Year(i) then
+      day_sum += 366
+    else
+      day_sum += 365;
+  end;
+  Print($'Количество дней между годами: {day_sum}');
 end.
